@@ -1,4 +1,4 @@
-from ..LambdaMeter import WavelengthMeterClient
+from LambdaMeter import WavelengthMeterClient
 
 client = WavelengthMeterClient()
 for i in range(100):
