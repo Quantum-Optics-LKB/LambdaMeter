@@ -7,7 +7,7 @@ import random
 import threading
 import time
 
-import TelnetServer
+from . import TelnetServer
 
 DLL_PATH = r"C:\Windows\System32\wlmData.dll"
 DLL = ctypes.WinDLL(DLL_PATH)
