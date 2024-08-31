@@ -4,16 +4,25 @@ Module to work with Angstrom WS7 wavelength meter
 
 import ctypes
 import random
+import sys
 import threading
 import time
 
 from . import TelnetServer
 
-DLL_PATH = r"C:\Windows\System32\wlmData.dll"
-DLL = ctypes.WinDLL(DLL_PATH)
-DLL.GetWavelengthNum.restype = ctypes.c_double
-DLL.GetFrequencyNum.restype = ctypes.c_double
-DLL.GetSwitcherMode.restype = ctypes.c_long
+DLL = None
+
+if sys.platform == "Windows":
+    DLL_PATH = r"C:\Windows\System32\wlmData.dll"
+    try:
+        DLL = ctypes.WinDLL(DLL_PATH)
+        DLL.GetWavelengthNum.restype = ctypes.c_double
+        DLL.GetFrequencyNum.restype = ctypes.c_double
+        DLL.GetSwitcherMode.restype = ctypes.c_long
+    except OSError:
+        print(f"Could not find {DLL_PATH}.")
+        print("Using dummy mode.")
+        DLL = None
 
 
 class WavelengthMeter:
@@ -30,7 +39,10 @@ class WavelengthMeter:
             port (int, optional): the port on which to set the telnet server.
         """
         self.channels = []
-        self.debug = debug
+        if DLL is None:
+            self.debug = True
+        else:
+            self.debug = debug
         self.poll_time = poll_time
         self.server = TelnetServer.TelnetServer(port=port)
         self.server_running = True
@@ -205,24 +217,3 @@ class WavelengthMeter:
         self.server_running = False
         self.server_thread.stop()
         self.server_thread.join()
-
-
-if __name__ == "__main__":
-    import signal
-    import sys
-    import time
-
-    wlm = WavelengthMeter(debug=False)
-    for i, wvl in enumerate(wlm.wavelength):
-        print(f"Channel {i + 1} / Wavelength is {wvl} nm")
-    for i, freq in enumerate(wlm.frequency):
-        print(f"Channel {i + 1} / Wavelength is {freq} THz")
-
-    def signal_handler(sig, frame):
-        print("You pressed Ctrl+C!")
-        wlm.close()
-        sys.exit(0)
-
-    signal.signal(signal.SIGINT, signal_handler)
-    while True:
-        time.sleep(0.1)
