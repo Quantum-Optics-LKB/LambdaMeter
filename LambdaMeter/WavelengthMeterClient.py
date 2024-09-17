@@ -35,7 +35,8 @@ class WavelengthMeterClient(telnetlib.Telnet):
         try:
             ret = float(ret)
         except ValueError:
-            print("Warning ! Received error: {ret}")
+            print(f"Warning ! Received error: {ret}")
+            print(ret)
         return ret
 
     def get_frequency(self, channel: int = 1) -> float:

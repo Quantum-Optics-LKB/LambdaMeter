@@ -11,6 +11,8 @@ import select
 import time
 import sys
 
+from numpy import unicode_
+
 
 class TelnetServer(object):
     """A basic Telnet server.
@@ -202,8 +204,8 @@ class TelnetServer(object):
 
     def _attempt_send(self, clid, data):
         # python 2/3 compatability fix - convert non-unicode string to unicode
-        if sys.version < '3' and type(data) != unicode:
-            data = unicode(data, self.encoding)
+        if sys.version < '3' and type(data) is not unicode_:
+            data = unicode_(data, self.encoding)
         try:
             # look up the client in the client map and use 'sendall' to send
             # the message string on the socket. 'sendall' ensures that all of

@@ -15,7 +15,7 @@ if __name__ == "__main__":
     while True:
         server.update()
         msg = server.get_messages()
-        print(msg)
+        print(f'msg: {msg}')
         for dest, m in msg:
             server.send_message(dest, f"You sent : {m}")
         time.sleep(1)

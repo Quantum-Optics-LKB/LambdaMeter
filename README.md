@@ -12,6 +12,9 @@ For the Telnet server it relies on [`TelnetServer`](https://github.com/OliverLSa
 ## Installation
 
 ## How to test it
+
+### Verify Telnet server client configuration
+- go to examples folder ans open
 - go to Tests folder and open `TestClientWlm.py` and change the IP address and port to the one of the server
 - run `python TestClientWlm.py`
 
