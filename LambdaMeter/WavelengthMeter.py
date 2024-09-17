@@ -12,7 +12,7 @@ from . import TelnetServer
 
 DLL = None
 
-if sys.platform == "Windows":
+if sys.platform == "win32":
     DLL_PATH = r"C:\Windows\System32\wlmData.dll"
     try:
         DLL = ctypes.WinDLL(DLL_PATH)
