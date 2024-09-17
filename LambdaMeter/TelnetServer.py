@@ -1,8 +1,6 @@
 """Basic Telnet server module.
-
 Contains one class, TelnetServer, which can be instantiated to start a
 server running then used to send and receive messages from clients.
-
 It is a generalization made by Oliver L. Sanz from Mark Frimston's
 mud-py server.
 """

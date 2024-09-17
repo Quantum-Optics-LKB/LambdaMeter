@@ -44,7 +44,7 @@ class WavelengthMeter:
         else:
             self.debug = debug
         self.poll_time = poll_time
-        self.server = TelnetServer.TelnetServer(port=port)
+        self.server = TelnetServer(port=port)
         self.server_running = True
         self.server_thread = threading.Thread(target=self.thread_loop)
         self.server_thread.start()

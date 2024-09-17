@@ -1,4 +1,9 @@
-from TelnetServer import TelnetServer
+import sys
+import os
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from LambdaMeter.TelnetServer import TelnetServer as TelnetServer
 
 class WvlServer(TelnetServer):
     def __init__(self, port=1234):
