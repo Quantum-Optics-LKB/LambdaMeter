@@ -1,6 +1,6 @@
 # LambdaMeter
 
-## Version 1.1
+## Version 1
 
 This is a minimal fork of [`py-ws7`](https://github.com/stepansnigirev/py-ws7) relying on Telnet for the server / client communication.
 
