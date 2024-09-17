@@ -34,3 +34,4 @@ For the Telnet server it relies on [`TelnetServer`](https://github.com/OliverLSa
 ## Future features ?
 
 
+- set_exposure from away
