@@ -17,5 +17,5 @@ if __name__ == "__main__":
         msg = server.get_messages()
         print(f'msg: {msg}')
         for dest, m in msg:
-            server.send_message(dest, f"You sent : {m}")
+            server.send_message(dest, f"You sent: {m}")
         time.sleep(1)

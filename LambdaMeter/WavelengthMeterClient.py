@@ -1,6 +1,5 @@
 import telnetlib
 
-
 class WavelengthMeterClient(telnetlib.Telnet):
     def __init__(self, host="localhost", port=1234):
         super().__init__(host=host, port=port)
@@ -35,8 +34,8 @@ class WavelengthMeterClient(telnetlib.Telnet):
         try:
             ret = float(ret)
         except ValueError:
-            print(f"Warning ! Received error: {ret}")
-            print(ret)
+            print(f"Warning ! Received error")
+            ret = ret.decode('utf-8')
         return ret
 
     def get_frequency(self, channel: int = 1) -> float:

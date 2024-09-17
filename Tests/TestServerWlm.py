@@ -9,12 +9,12 @@ from LambdaMeter.WavelengthMeter import WavelengthMeter
 
 # Instantiate the wavemeter
 wavemeter = WavelengthMeter(debug=False)
-print("Server sent:")
 for i, wvl in enumerate(wavemeter.wavelength):
     print(f"Channel {i + 1} - Wavelength: {wvl} nm")
-print("")
+# print("")
 for i, freq in enumerate(wavemeter.frequency):
     print(f"Channel {i + 1} - Frequency: {freq} THz")
+time.sleep(100)
 
 
 def signal_handler(sig, frame):
