@@ -12,7 +12,7 @@ from . import TelnetServer
 
 DLL = None
 
-if sys.platform == "Windows":
+if sys.platform == "win32":
     DLL_PATH = r"C:\Windows\System32\wlmData.dll"
     try:
         DLL = ctypes.WinDLL(DLL_PATH)
@@ -44,7 +44,7 @@ class WavelengthMeter:
         else:
             self.debug = debug
         self.poll_time = poll_time
-        self.server = TelnetServer.TelnetServer(port=port)
+        self.server = TelnetServer(port=port)
         self.server_running = True
         self.server_thread = threading.Thread(target=self.thread_loop)
         self.server_thread.start()
@@ -61,6 +61,7 @@ class WavelengthMeter:
         messages = self.server.get_messages()
         for dest, m in messages:
             reply = self.handle_message(m)
+            print('reply:',reply)
             self.server.send_message(dest, reply)
 
     def handle_message(self, message: str) -> str:
@@ -75,9 +76,14 @@ class WavelengthMeter:
         Returns:
             str: The corresponding value.
         """
-        if self.debug:
-            print(message)
-            return f"You sent : {message}"
+        # Comment this block to test on a local machin without the DLL
+        # it will return dummy data
+        # if self.debug:
+        #     if DLL is None:
+        #         error_message = b'DLL not loaded\n\r'
+        #         return "DLL not loaded"
+        #     return f"You sent: {message}"
+
         try:
             req, channel = message.split(",")
         except ValueError:

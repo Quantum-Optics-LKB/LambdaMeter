@@ -1,3 +1,8 @@
+"""
+Script to read a .lta file and extract the time vs frequency data.
+Alix Merolle - 1D experiment
+"""
+
 import pandas as pd
 import numpy as np
 import scipy.constants

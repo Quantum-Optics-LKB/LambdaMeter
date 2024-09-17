@@ -8,3 +8,20 @@ This directly implements a server thread running continuously in the Wavemeter c
 wavelength / frequency as long as one instance is running.
 
 For the Telnet server it relies on [`TelnetServer`](https://github.com/OliverLSanz/python-telnetserver).
+
+## Installation
+
+## How to test it
+
+### Verify Telnet server client configuration
+- run `python examples/SimpleServer.py` to launch the dummy server on the default port 1234.
+- In a second terminal run `python examples/SimpleClient.py` to verify the server is running correctly.
+
+### Run some tests ?
+- run `python tests/TestServerWlm.py` to launch the server with dummy data (or the real one if you are on the Windows machine and you have the DLL)
+- In a second terminal, run `python tests/TestClientWlm.py` to connect to the server and query the wavelength / frequency.
+- Update this `print(client.get_wavelength(2))` in the client to get the desired channel.
+
+## Future features ?
+
+
