@@ -9,11 +9,20 @@ wavelength / frequency as long as one instance is running.
 
 For the Telnet server it relies on [`TelnetServer`](https://github.com/OliverLSanz/python-telnetserver).
 
-## Installation
+## Usage 
+### Installation of the server
+1. Clone the repository on the computer with the Wavemeter.
+2. run `python tests/TestServerWlm.py`
 
-## How to test it
+### Installation of the client
 
-### Verify Telnet server client configuration
+1. Clone the repository on the computer with the client.
+2. run `python tests/TestClientWlm.py`
+
+
+## Debug
+
+### Verification of Telnet server client configuration
 - run `python examples/SimpleServer.py` to launch the dummy server on the default port 1234.
 - In a second terminal run `python examples/SimpleClient.py` to verify the server is running correctly.
 
