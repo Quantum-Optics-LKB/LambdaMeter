@@ -8,4 +8,3 @@ This directly implements a server thread running continuously in the Wavemeter c
 wavelength / frequency as long as one instance is running.
 
 For the Telnet server it relies on [`TelnetServer`](https://github.com/OliverLSanz/python-telnetserver).
-
